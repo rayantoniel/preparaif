@@ -22,7 +22,7 @@ export default function EditaisList() {
     <section className="editais">
       <h2>Editais Anteriores</h2>
 
-      <div className="editais-grid">
+      <div className="editais-carousel">
         {editais.map((edital) => (
           <EditalCard key={edital.id} edital={edital} />
         ))}
