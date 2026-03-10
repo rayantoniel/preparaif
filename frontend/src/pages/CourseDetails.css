@@ -1,0 +1,89 @@
+
+.details-body {
+  background-color: #F3F3F3;
+  display: grid;
+  grid-template-columns: 250px 1fr; 
+  gap: 40px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.social-title {
+  display: block;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edicts-box {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.edicts-box-title {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.edicts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.edicts-list li {
+  color: #7a7a7a;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.edicts-list li:hover {
+  color: #1a7a4c;
+  font-weight: 500;
+}
+
+.details-description p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.course-specs {
+  margin-top: 40px;
+}
+
+.course-specs p {
+  margin-bottom: 4px;
+  color: #666;
+}
+
+.course-specs strong {
+  color: #333;
+}

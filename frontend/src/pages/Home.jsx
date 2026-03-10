@@ -1,13 +1,11 @@
-import Header from "../components/Header";
-import SearchBar from "../components/SearchBar";
+import HeaderHome from "../components/HeaderHome";
 import CoursesList from "../components/CoursesList";
 import EditaisList from "../components/EditaisList";
 
 export default function Home() {
   return (
     <div>
-      <Header />
-      <SearchBar />
+      <HeaderHome />
       <CoursesList />
       <EditaisList />
     </div>
