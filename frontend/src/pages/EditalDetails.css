@@ -1,0 +1,97 @@
+.edict-page-container {
+  width: 100%;
+  border-radius: 24px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #F3F3F3;
+}
+
+.edict-back {
+  margin-bottom: 50px; 
+}
+
+.edict-content-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px; 
+  justify-content: space-between;
+}
+
+.edict-right-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  height: 100%;
+}
+
+
+.edict-title {
+  font-family: 'Georgia', serif;
+  font-size: 3.5rem;
+  color: #555;
+  margin: 10px 0 20px 0;
+  font-weight: normal;
+}
+
+.edict-image {
+  width: 100%;
+  flex-grow: 1;
+  min-height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+.edict-text-content p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.edict-text-content h4 {
+  color: #444;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.edict-text-content ul {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  padding-left: 20px;
+}
+
+.edict-text-content li {
+  margin-bottom: 8px;
+}
+
+.action-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.action-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.action-card-title {
+  font-size: 1.5rem;
+  color: #555;
+  font-weight: normal;
+  margin: 0 0 30px 0;
+}
+
+.action-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}

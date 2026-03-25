@@ -1,0 +1,72 @@
+.editais {
+  padding: 40px 0;
+}
+
+.title {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.editais-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.editais-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.editais-carousel::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 4px;
+}
+
+.edital-card {
+  width: 10rem;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 1px solid #eaeaea;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+.edital-card h2 {
+  font-size: 1.5rem; 
+  color: #1a7a4c; 
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.edital-card p {
+  width: 100%;
+  font-size: 0.6rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.edital-card small {
+  display: block;
+  font-size: 0.4rem;
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .edital-card {
+    min-width: 260px;
+    padding: 20px;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+}

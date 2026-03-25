@@ -1,0 +1,7 @@
+.app-container{
+  display: flex;
+  flex-direction: column;
+  margin: 40px 16rem;
+  gap: 48px;
+}
+
