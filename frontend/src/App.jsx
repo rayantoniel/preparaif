@@ -1,7 +1,5 @@
-// 1. Importamos as ferramentas do React Router
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// 2. Importamos todas as suas telas maravilhosas
 import Home from "./pages/Home";
 import CourseDetails from "./pages/CourseDetails";
 import EditalDetails from "./pages/EditalDetails";
