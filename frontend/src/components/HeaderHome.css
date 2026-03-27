@@ -13,6 +13,7 @@
   padding: 32px 24px;
   text-align: center;
   box-shadow: 0 4px 8px #3c3c3c40;
+  overflow-wrap: anywhere;
 }
 
 .hero-subtitle {
@@ -24,11 +25,12 @@
 }
 
 .hero-title {
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
   color: #555;
   font-weight: 400;
   line-height: 1.4;
   margin: 0;
+  text-wrap: balance;
 }
 
 .highlight-green {
@@ -101,29 +103,39 @@
 
 @media (max-width: 480px) {
   .header-container {
-    gap: 24px;
+    gap: 18px;
+    margin-bottom: 24px;
   }
 
   .hero-banner {
-    padding: 24px 16px;
-    border-radius: 24px;
+    padding: 20px 14px;
+    border-radius: 20px;
   }
 
   .hero-subtitle {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
   }
 
   .hero-title {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.35;
   }
 
   .search-container {
-    padding: 12px 14px;
-    border-radius: 18px;
+    padding: 11px 12px;
+    border-radius: 16px;
+    gap: 8px;
   }
 
   .search-input {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+  }
+
+  .search-icon {
+    width: 16px;
+    height: 16px;
   }
 }
 

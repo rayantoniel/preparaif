@@ -1,7 +1,16 @@
 .app-container{
   display: flex;
   flex-direction: column;
-  margin: 40px 16rem;
+  width: min(1200px, 100% - clamp(24px, 6vw, 96px));
+  margin: 40px auto;
   gap: 48px;
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    width: calc(100% - 40px);
+    margin: 24px auto;
+    gap: 32px;
+  }
 }
 

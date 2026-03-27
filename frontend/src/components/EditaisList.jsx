@@ -1,17 +1,21 @@
 import { editais } from "../services/edital";
 import Edital from "./EditalCard";
-import "./EditalCard.css"; 
+import "./EditalCard.css";
 
 export default function EditaisList() {
   return (
-    <div className="editais">
-      <h2 className="title">Editais Anteriores</h2>
+    <section className="editais">
+      <div className="editais-header">
+        <h2 className="title">Editais Anteriores</h2>
+      </div>
 
       <div className="editais-carousel">
         {editais.map((edital) => (
-          <Edital key={edital.id} edital={edital} />
+          <div className="edital-item" key={edital.id}>
+            <Edital edital={edital} />
+          </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
