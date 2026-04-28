@@ -1,16 +1,10 @@
-import express from "express";
-import cors from "cors";
-import coursesRoutes from "./routes/courses.routes.js";
-import editaisRoutes from "./routes/editais.routes.js";
+import app from "./app.js";
+import dotenv from "dotenv";
 
-const app = express();
+dotenv.config();
 
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-app.use("/courses", coursesRoutes);
-app.use("/editais", editaisRoutes);
-
-app.listen(3333, () => {
-  console.log("Funcionando na porta 3333");
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

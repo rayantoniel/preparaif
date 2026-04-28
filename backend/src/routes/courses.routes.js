@@ -1,11 +1,9 @@
 import express from "express";
-import { pool } from "../db.js";
+import { getCourses, createCourse } from "../controllers/coursesController.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const { rows } = await pool.query("SELECT * FROM courses");
-  res.json(rows);
-});
+router.get("/", getCourses);
+router.post("/", createCourse);
 
 export default router;
