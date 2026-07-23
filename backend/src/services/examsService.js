@@ -4,8 +4,8 @@ export async function findAllExams() {
   return prisma.exam.findMany();
 }
 
-export async function createExamService(title, description) {
+export async function createExamService(name, date) {
   return prisma.exam.create({
-    data: { title, description }
+    data: { name, date: new Date(date) }
   });
 }

@@ -1,4 +1,4 @@
-import { findAllCourses, createCourseService } from "../services/coursesService.js";
+import { findAllExams, createExamService } from "../services/examsService.js";
 
 export async function getExams(req, res) {
   const exams = await findAllExams();
@@ -6,7 +6,7 @@ export async function getExams(req, res) {
 }
 
 export async function createExam(req, res) {
-  const { title, description } = req.body;
-  const exam = await createExamService(title, description);
+  const { name, date } = req.body;
+  const exam = await createExamService(name, date);
   res.json(exam);
 }
