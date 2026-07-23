@@ -1,4 +1,4 @@
-import { findAllCourses, createCourseService } from "../services/coursesService.js";
+import { findAllEditais, createEditaisService } from "../services/editaisService.js";
 
 export async function getEditais(req, res) {
   const editais = await findAllEditais();
@@ -6,7 +6,7 @@ export async function getEditais(req, res) {
 }
 
 export async function createEditais(req, res) {
-  const { title, description } = req.body;
-  const editais = await createEditaisService(title, description);
+  const { title, content } = req.body;
+  const editais = await createEditaisService(title, content);
   res.json(editais);
 }

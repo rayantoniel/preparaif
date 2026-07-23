@@ -1,11 +1,11 @@
 import prisma from "../config/prisma.js";
 
 export async function findAllEditais() {
-  return prisma.editais.findMany();
+  return prisma.edital.findMany();
 }
 
-export async function createEditaisService(title, description) {
-  return prisma.editais.create({
-    data: { title, description }
+export async function createEditaisService(title, content) {
+  return prisma.edital.create({
+    data: { title, content }
   });
 }
