@@ -6,7 +6,7 @@ export async function getEditais(req, res) {
 }
 
 export async function createEditais(req, res) {
-  const { title, content } = req.body;
-  const editais = await createEditaisService(title, content);
+  const { title, content, time } = req.body;
+  const editais = await createEditaisService(title, content, time);
   res.json(editais);
 }

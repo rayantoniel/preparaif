@@ -6,7 +6,6 @@ export async function getCourses(req, res) {
 }
 
 export async function createCourse(req, res) {
-  const { title, description } = req.body;
-  const course = await createCourseService(title, description);
+  const course = await createCourseService(req.body);
   res.json(course);
 }

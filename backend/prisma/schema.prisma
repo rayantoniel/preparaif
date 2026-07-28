@@ -8,22 +8,42 @@ datasource db {
 }
 
 model Course {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  createdAt   DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  title         String
+  description   String
+  instituteName String
+  instituteLogo String
+  image         String
+  readTime      String
+  modalidade    String
+  duracao       String
+  titulo        String
+  turno         String
+  campus        String
+  edicts        String
+  createdAt     DateTime @default(now())
 }
 
 model Edital {
   id        Int      @id @default(autoincrement())
   title     String
   content   String
+  time      String
   createdAt DateTime @default(now())
 }
 
 model Exam {
-  id        Int      @id @default(autoincrement())
-  name      String
-  date      DateTime
-  createdAt DateTime @default(now())
+  id        Int        @id @default(autoincrement())
+  title     String
+  questions Question[]
+  createdAt DateTime   @default(now())
+}
+
+model Question {
+  id                 Int    @id @default(autoincrement())
+  text               String
+  options            String
+  correctAnswerIndex Int
+  examId             Int
+  exam               Exam   @relation(fields: [examId], references: [id])
 }

@@ -4,8 +4,6 @@ export async function findAllEditais() {
   return prisma.edital.findMany();
 }
 
-export async function createEditaisService(title, content) {
-  return prisma.edital.create({
-    data: { title, content }
-  });
+export async function createEditaisService(title, content, time) {
+  return prisma.edital.create({ data: { title, content, time } });
 }
