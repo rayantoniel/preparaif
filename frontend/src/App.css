@@ -1,4 +1,4 @@
-.app-container{
+.app-container {
   display: flex;
   flex-direction: column;
   width: min(1200px, 100% - clamp(24px, 6vw, 96px));
@@ -13,4 +13,3 @@
     gap: 32px;
   }
 }
-
