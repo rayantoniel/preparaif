@@ -1,17 +1,47 @@
-import { useState } from 'react';
-import { examData } from '../services/examData';
+import { useState, useEffect } from 'react';
+import { fetchExam } from '../services/examData';
 import './Exam.css';
 import { useNavigate } from 'react-router-dom';
 
 function Exam() {
   const navigate = useNavigate();
 
+  const [examData, setExamData] = useState(null);
+  const [loadingExam, setLoadingExam] = useState(true);
+
   const [screenState, setScreenState] = useState('intro');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userAnswers, setUserAnswers] = useState([]);
 
-  const [userAnswers, setUserAnswers] = useState(Array(examData.questions.length).fill(null));
+  useEffect(() => {
+    fetchExam()
+      .then((data) => {
+        setExamData(data);
+        if (data) {
+          setUserAnswers(Array(data.questions.length).fill(null));
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoadingExam(false));
+  }, []);
+
+  if (loadingExam) {
+    return (
+      <div className="exam-page-container">
+        <p>Carregando prova...</p>
+      </div>
+    );
+  }
+
+  if (!examData) {
+    return (
+      <div className="exam-page-container">
+        <p>Não foi possível carregar a prova.</p>
+      </div>
+    );
+  }
 
   const currentQuestion = examData.questions[currentQuestionIndex];
 

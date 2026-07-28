@@ -1,8 +1,19 @@
-import { editais } from "../services/edital";
+import { useState, useEffect } from "react";
+import { fetchEditais } from "../services/edital";
 import Edital from "./EditalCard";
 import "./EditalCard.css";
 
 export default function EditaisList() {
+  const [editais, setEditais] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchEditais()
+      .then(setEditais)
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <section className="editais">
       <div className="editais-header">
@@ -10,11 +21,13 @@ export default function EditaisList() {
       </div>
 
       <div className="editais-carousel">
-        {editais.map((edital) => (
-          <div className="edital-item" key={edital.id}>
-            <Edital edital={edital} />
-          </div>
-        ))}
+        {loading && <p>Carregando editais...</p>}
+        {!loading &&
+          editais.map((edital) => (
+            <div className="edital-item" key={edital.id}>
+              <Edital edital={edital} />
+            </div>
+          ))}
       </div>
     </section>
   );

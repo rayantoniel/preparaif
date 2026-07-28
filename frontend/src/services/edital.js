@@ -1,16 +1,14 @@
-export const editais = [
-  {
-    id: 1,
-    title: "EDITAL 01/2025",
-    description:
-      "IFAL abre processo seletivo para ingresso nos cursos Técnicos Integrados ao Ensino Médio",
-    time: "Processo Seletivo · 4min de leitura",
-  },
-  {
-    id: 2,
-    title: "EDITAL 02/2025",
-    description:
-      "IFAL abre processo seletivo para ingresso nos cursos Técnicos Integrados ao Ensino Médio",
-    time: "Processo Seletivo · 4min de leitura",
-  },
-];
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+export async function fetchEditais() {
+  const response = await fetch(`${API_URL}/editais`);
+  if (!response.ok) throw new Error("Erro ao buscar editais");
+  const data = await response.json();
+
+  return data.map((e) => ({
+    id: e.id,
+    title: e.title,
+    description: e.content,
+    time: e.time
+  }));
+}
