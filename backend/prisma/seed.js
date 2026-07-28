@@ -11,8 +11,8 @@ async function main() {
           "O curso de Bacharelado em Sistemas de Informação forma profissionais capazes de projetar, desenvolver e gerenciar soluções tecnológicas que apoiam os processos organizacionais. O estudante adquire uma sólida formação em tecnologia da informação, gestão e inovação, aprendendo a integrar conhecimentos técnicos e estratégicos para resolver problemas do mundo real.",
         instituteName: "Instituto Federal de Alagoas - Campus Arapiraca",
         instituteLogo:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/IFAL_logo.svg/2560px-IFAL_logo.svg.png",
-        image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
+        image: "https://picsum.photos/id/180/800/400",
         readTime: "4min",
         modalidade: "Presencial",
         duracao: "4 anos",
@@ -23,33 +23,35 @@ async function main() {
       },
       {
         title: "Tecnólogo em Logística - Noturno",
-        description: "",
+        description:
+          "O curso Tecnólogo em Logística forma profissionais aptos a planejar, organizar e controlar os fluxos de materiais, produtos e informações dentro das cadeias de suprimentos. O estudante aprende gestão de estoques, transportes, distribuição e armazenagem, além de ferramentas de tecnologia aplicadas à logística.\n\nCom duração mais curta que um bacharelado, o curso prepara o egresso para atuar rapidamente no mercado de trabalho em empresas de todos os portes, industriais, comerciais ou de serviços.",
         instituteName: "Instituto Federal de Alagoas - Campus Arapiraca",
         instituteLogo:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/IFAL_logo.svg/2560px-IFAL_logo.svg.png",
-        image: "",
-        readTime: "",
-        modalidade: "",
-        duracao: "",
-        titulo: "",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
+        image: "https://picsum.photos/id/1071/800/400",
+        readTime: "3min",
+        modalidade: "Presencial",
+        duracao: "2 anos e meio",
+        titulo: "Tecnólogo em Logística",
         turno: "Noturno",
         campus: "Arapiraca",
-        edicts: JSON.stringify([])
+        edicts: JSON.stringify(["1. Sisu 2025", "1. Sisu 2024"])
       },
       {
         title: "Licenciatura em Ciências Biológicas - Noturno",
-        description: "",
+        description:
+          "A Licenciatura em Ciências Biológicas forma professores capacitados para atuar no ensino de Biologia na educação básica. O curso combina disciplinas de biologia geral, ecologia, genética e zoologia com formação pedagógica, estágios supervisionados e práticas de ensino.\n\nO licenciado está preparado para lecionar em escolas públicas e privadas, além de poder atuar em projetos de educação ambiental e divulgação científica.",
         instituteName: "Instituto Federal de Alagoas - Campus Maceió",
         instituteLogo:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/IFAL_logo.svg/2560px-IFAL_logo.svg.png",
-        image: "",
-        readTime: "",
-        modalidade: "",
-        duracao: "",
-        titulo: "",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
+        image: "https://picsum.photos/id/40/800/400",
+        readTime: "4min",
+        modalidade: "Presencial",
+        duracao: "4 anos",
+        titulo: "Licenciado em Ciências Biológicas",
         turno: "Noturno",
         campus: "Maceió",
-        edicts: JSON.stringify([])
+        edicts: JSON.stringify(["1. Sisu 2025", "1. Sisu 2024", "1. Sisu 2023"])
       }
     ]
   });

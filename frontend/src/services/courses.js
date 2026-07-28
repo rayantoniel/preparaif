@@ -1,5 +1,13 @@
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
+function detectTipo(title) {
+  const lower = title.toLowerCase();
+  if (lower.includes("bacharelado")) return "Bacharelado";
+  if (lower.includes("licenciatura")) return "Licenciatura";
+  if (lower.includes("tecnólogo") || lower.includes("tecnologo")) return "Tecnólogo";
+  return "Outro";
+}
+
 export async function fetchCourses() {
   const response = await fetch(`${API_URL}/courses`);
   if (!response.ok) throw new Error("Erro ao buscar cursos");
@@ -16,6 +24,7 @@ export async function fetchCourses() {
       readTime: c.readTime,
       image: c.image,
       description: c.description,
+      tipo: detectTipo(c.title),
       specs: {
         modalidade: c.modalidade,
         duracao: c.duracao,
@@ -23,6 +32,8 @@ export async function fetchCourses() {
         turno: c.turno,
         campus: c.campus
       },
+      turno: c.turno,
+      campus: c.campus,
       edicts: c.edicts
     }
   }));

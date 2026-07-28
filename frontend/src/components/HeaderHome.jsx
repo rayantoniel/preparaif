@@ -1,6 +1,6 @@
 import "./HeaderHome.css";
 
-export default function HeaderHome() {
+export default function HeaderHome({ searchTerm, onSearchChange }) {
 	return (
 		<div className="header-container">
 			<div className="hero-banner">
@@ -29,7 +29,13 @@ export default function HeaderHome() {
 					<circle cx="11" cy="11" r="8"></circle>
 					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 				</svg>
-				<input type="text" className="search-input" placeholder="Pesquisar" />
+				<input
+					type="text"
+					className="search-input"
+					placeholder="Pesquisar curso..."
+					value={searchTerm}
+					onChange={(e) => onSearchChange(e.target.value)}
+				/>
 			</div>
 		</div>
 	);
