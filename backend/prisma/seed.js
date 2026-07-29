@@ -14,12 +14,11 @@ async function main() {
           "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
         image: "https://picsum.photos/id/180/800/400",
         readTime: "4min",
-        modalidade: "Presencial",
-        duracao: "4 anos",
-        titulo: "Bacharel em Sistemas de Informação",
-        turno: "Noturno",
-        campus: "Arapiraca",
-        edicts: JSON.stringify(["1. Sisu 2025", "1. Sisu 2024", "1. Sisu 2023"])
+        modality: "Presencial",
+        duration: "4 anos",
+        degree: "Bacharel em Sistemas de Informação",
+        shift: "Noturno",
+        campus: "Arapiraca"
       },
       {
         title: "Tecnólogo em Logística - Noturno",
@@ -30,12 +29,11 @@ async function main() {
           "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
         image: "https://picsum.photos/id/1071/800/400",
         readTime: "3min",
-        modalidade: "Presencial",
-        duracao: "2 anos e meio",
-        titulo: "Tecnólogo em Logística",
-        turno: "Noturno",
-        campus: "Arapiraca",
-        edicts: JSON.stringify(["1. Sisu 2025", "1. Sisu 2024"])
+        modality: "Presencial",
+        duration: "2 anos e meio",
+        degree: "Tecnólogo em Logística",
+        shift: "Noturno",
+        campus: "Arapiraca"
       },
       {
         title: "Licenciatura em Ciências Biológicas - Noturno",
@@ -46,12 +44,11 @@ async function main() {
           "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg/250px-Instituto_Federal_de_Alagoas_-_Marca_Vertical_2015.svg.png",
         image: "https://picsum.photos/id/40/800/400",
         readTime: "4min",
-        modalidade: "Presencial",
-        duracao: "4 anos",
-        titulo: "Licenciado em Ciências Biológicas",
-        turno: "Noturno",
-        campus: "Maceió",
-        edicts: JSON.stringify(["1. Sisu 2025", "1. Sisu 2024", "1. Sisu 2023"])
+        modality: "Presencial",
+        duration: "4 anos",
+        degree: "Licenciado em Ciências Biológicas",
+        shift: "Noturno",
+        campus: "Maceió"
       }
     ]
   });
