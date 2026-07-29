@@ -15,20 +15,25 @@ model Course {
   instituteLogo String
   image         String
   readTime      String
-  modalidade    String
-  duracao       String
-  titulo        String
-  turno         String
+  modality      String
+  duration      String
+  degree        String
+  shift         String
   campus        String
-  edicts        String
+  editals       Edital[]
+
   createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Edital {
   id        Int      @id @default(autoincrement())
   title     String
   content   String
-  time      String
+  publishAt String
+  createdAt DateTime @default(now())
+  courseId  Int?
+  course    Course?  @relation(fields: [courseId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
 
@@ -45,5 +50,5 @@ model Question {
   options            String
   correctAnswerIndex Int
   examId             Int
-  exam               Exam   @relation(fields: [examId], references: [id])
+  exam               Exam     @relation(fields: [examId], references: [id], onDelete: Cascade)
 }
