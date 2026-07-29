@@ -1,4 +1,4 @@
-import "./HeaderCourse.css";
+import "./CourseStyle.css";
 import { useNavigate } from 'react-router-dom';
 function HeaderCourse({ title, image }) {
 	const navigate = useNavigate();

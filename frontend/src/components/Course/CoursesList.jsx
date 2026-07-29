@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
-import { fetchCourses } from "../services/courses";
+import { fetchCourses } from "../../services/courses";
 import CourseCard from "./CourseCard";
-import "./CourseCard.css";
+import "./CourseStyle.css";
 
 const PAGE_SIZE = 6;
 

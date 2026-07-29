@@ -1,4 +1,4 @@
-import "./EditalCard.css"
+import "./EditalStyle.css"
 import { useNavigate } from 'react-router-dom';
 export default function Edital({ edital }) {
   const navigate = useNavigate();

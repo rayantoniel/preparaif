@@ -1,10 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Home from "./pages/Home";
-import CourseDetails from "./pages/CourseDetails";
-import EditalDetails from "./pages/EditalDetails";
-import LastExams from "./pages/LastExams";
-import Exam from "./pages/Exam";
+import { Home, CourseDetails, EditalDetails, LastExams, Exam } from "./pages";
 import "./App.css";
 
 function App() {
