@@ -1,7 +1,7 @@
 import { useState } from "react";
-import HeaderHome from "../../components/HeaderHome";
-import CoursesList from "../../components/CoursesList";
-import EditaisList from "../../components/EditaisList";
+import { HeaderHome } from "../../components/HeaderHome";
+import { CoursesList } from "../../components/Course";
+import { EditaisList } from "../../components/Edital";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");

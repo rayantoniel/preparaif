@@ -40,41 +40,44 @@ export default function CoursesList({ searchTerm = "" }) {
     [courses]
   );
 
-  const filteredCourses = courses.filter((c) => {
-    const matchesSearch = normalize(c.course.name).includes(normalize(searchTerm));
-    const matchesTurno = !turnoFilter || c.course.turno === turnoFilter;
-    const matchesCampus = !campusFilter || c.course.campus === campusFilter;
-    const matchesTipo = !tipoFilter || c.course.tipo === tipoFilter;
-    return matchesSearch && matchesTurno && matchesCampus && matchesTipo;
-  });
+  const filteredCourses = useMemo(() => {
+    return courses.filter((c) => {
+      const matchesSearch = normalize(c.course.name).includes(normalize(searchTerm));
+      const matchesTurno = !turnoFilter || c.course.turno === turnoFilter;
+      const matchesCampus = !campusFilter || c.course.campus === campusFilter;
+      const matchesTipo = !tipoFilter || c.course.tipo === tipoFilter;
+      return matchesSearch && matchesTurno && matchesCampus && matchesTipo;
+    });
+  }, [courses, searchTerm, turnoFilter, campusFilter, tipoFilter]);
 
   const visibleCourses = filteredCourses.slice(0, visibleCount);
   const hasMore = visibleCount < filteredCourses.length;
-
-  useEffect(() => {
+  
+  const handleFilterChange = (setter) => (e) => {
+    setter(e.target.value);
     setVisibleCount(PAGE_SIZE);
-  }, [searchTerm, turnoFilter, campusFilter, tipoFilter]);
+  };
 
   if (loading) return <p>Carregando cursos...</p>;
 
   return (
     <>
       <div className="courses-filters">
-        <select value={tipoFilter} onChange={(e) => setTipoFilter(e.target.value)}>
+        <select value={tipoFilter} onChange={handleFilterChange(setTipoFilter)}>
           <option value="">Todos os tipos</option>
           {tipos.map((t) => (
             <option key={t} value={t}>{t}</option>
           ))}
         </select>
 
-        <select value={turnoFilter} onChange={(e) => setTurnoFilter(e.target.value)}>
+        <select value={turnoFilter} onChange={handleFilterChange(setTurnoFilter)}>
           <option value="">Todos os turnos</option>
           {turnos.map((t) => (
             <option key={t} value={t}>{t}</option>
           ))}
         </select>
 
-        <select value={campusFilter} onChange={(e) => setCampusFilter(e.target.value)}>
+        <select value={campusFilter} onChange={handleFilterChange(setCampusFilter)}>
           <option value="">Todos os campi</option>
           {campuses.map((c) => (
             <option key={c} value={c}>{c}</option>
