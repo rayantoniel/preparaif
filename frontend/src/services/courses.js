@@ -1,40 +1,39 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+export async function fetchCourses() {
+  const response = await fetch("/api/curso");
+  if (!response.ok) throw new Error("Erro ao buscar os cursos");
 
-function detectTipo(title) {
-  const lower = title.toLowerCase();
-  if (lower.includes("bacharelado")) return "Bacharelado";
-  if (lower.includes("licenciatura")) return "Licenciatura";
-  if (lower.includes("tecnólogo") || lower.includes("tecnologo")) return "Tecnólogo";
-  return "Outro";
+  const data = await response.json();
+  
+
+  return data?.map((c) => ({
+    id: c.id,
+    title: c.title,
+    description: c.description,
+    instituteName: c.instituteName,
+    instituteLogo: c.instituteLogo,
+    image: c.image,
+    readTime: c.readTime,
+    modality: c.modality,
+    duration: c.duration,
+    degree: c.degree,
+    shift: c.shift,
+    campus: c.campus,
+    editals: (c.editals || []).map((e) => ({
+      id: e?.id,
+      title: e?.title,
+      description: e?.description,
+      time: e?.time
+    }))
+  }));
 }
 
-export async function fetchCourses() {
-  const response = await fetch(`${API_URL}/courses`);
-  if (!response.ok) throw new Error("Erro ao buscar cursos");
-  const data = await response.json();
+export async function fetchCourseById(id) {
+  const response = await fetch(`/api/curso/${id}`);
+  
+  if (!response.ok) {
+    throw new Error("Erro ao buscar o curso");
+  }
 
-  return data.map((c) => ({
-    id: c.id,
-    institute: {
-      name: c.instituteName,
-      logo: c.instituteLogo
-    },
-    course: {
-      name: c.title,
-      readTime: c.readTime,
-      image: c.image,
-      description: c.description,
-      tipo: detectTipo(c.title),
-      specs: {
-        modalidade: c.modalidade,
-        duracao: c.duracao,
-        titulo: c.titulo,
-        turno: c.turno,
-        campus: c.campus
-      },
-      turno: c.turno,
-      campus: c.campus,
-      edicts: c.edicts
-    }
-  }));
+  const data = await response.json();
+  return data;
 }

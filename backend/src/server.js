@@ -1,10 +1,19 @@
-import app from "./app.js";
-import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import courseRoutes from "./routes/coursesRoutes.js"; 
+import editalRoutes from "./routes/editaisRoutes.js";
+import examRoutes from "./routes/examsRoutes.js";
 
-dotenv.config();
+const app = express();
 
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+
+app.use("/api/curso", courseRoutes);
+app.use("/api/edital", editalRoutes);
+app.use("/api/exame", examRoutes);
+
+app.listen(3000, () => {
+  console.log("Servidor rodando na porta 3000 🚀");
 });

@@ -1,10 +1,11 @@
 import "./EditalStyle.css"
 import { useNavigate } from 'react-router-dom';
+
 export default function Edital({ edital }) {
   const navigate = useNavigate();
 
     const irParaDetalhesEdital = () => {
-        navigate('/edital');
+        navigate(`/edital/${edital.id}`);
     };
   return (
     <button className="edital-card" onClick={irParaDetalhesEdital}>

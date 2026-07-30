@@ -15,11 +15,10 @@ function normalize(str) {
 export default function CoursesList({ searchTerm = "" }) {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [turnoFilter, setTurnoFilter] = useState("");
+  const [shiftFilter, setShiftFilter] = useState("");
   const [campusFilter, setCampusFilter] = useState("");
-  const [tipoFilter, setTipoFilter] = useState("");
+  const [degreeFilter, setDegreeFilter] = useState("");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-
   useEffect(() => {
     fetchCourses()
       .then(setCourses)
@@ -27,28 +26,28 @@ export default function CoursesList({ searchTerm = "" }) {
       .finally(() => setLoading(false));
   }, []);
 
-  const turnos = useMemo(
-    () => [...new Set(courses.map((c) => c.course.turno).filter(Boolean))],
+  const shifts = useMemo(
+    () => [...new Set(courses.map((c) => c.shift).filter(Boolean))],
     [courses]
   );
   const campuses = useMemo(
-    () => [...new Set(courses.map((c) => c.course.campus).filter(Boolean))],
+    () => [...new Set(courses.map((c) => c.campus).filter(Boolean))],
     [courses]
   );
-  const tipos = useMemo(
-    () => [...new Set(courses.map((c) => c.course.tipo).filter(Boolean))],
+  const degrees = useMemo(
+    () => [...new Set(courses.map((c) => c.degree).filter(Boolean))],
     [courses]
   );
 
   const filteredCourses = useMemo(() => {
     return courses.filter((c) => {
-      const matchesSearch = normalize(c.course.name).includes(normalize(searchTerm));
-      const matchesTurno = !turnoFilter || c.course.turno === turnoFilter;
-      const matchesCampus = !campusFilter || c.course.campus === campusFilter;
-      const matchesTipo = !tipoFilter || c.course.tipo === tipoFilter;
-      return matchesSearch && matchesTurno && matchesCampus && matchesTipo;
+      const matchesSearch = normalize(c.title).includes(normalize(searchTerm));
+      const matchesShift = !shiftFilter || c.shift === shiftFilter;
+      const matchesCampus = !campusFilter || c.campus === campusFilter;
+      const matchesDegree = !degreeFilter || c.degree === degreeFilter;
+      return matchesSearch && matchesShift && matchesCampus && matchesDegree;
     });
-  }, [courses, searchTerm, turnoFilter, campusFilter, tipoFilter]);
+  }, [courses, searchTerm, shiftFilter, campusFilter, degreeFilter]);
 
   const visibleCourses = filteredCourses.slice(0, visibleCount);
   const hasMore = visibleCount < filteredCourses.length;
@@ -63,17 +62,17 @@ export default function CoursesList({ searchTerm = "" }) {
   return (
     <>
       <div className="courses-filters">
-        <select value={tipoFilter} onChange={handleFilterChange(setTipoFilter)}>
+        <select value={degreeFilter} onChange={handleFilterChange(setDegreeFilter)}>
           <option value="">Todos os tipos</option>
-          {tipos.map((t) => (
-            <option key={t} value={t}>{t}</option>
+          {degrees.map((d) => (
+            <option key={d} value={d}>{d}</option>
           ))}
         </select>
 
-        <select value={turnoFilter} onChange={handleFilterChange(setTurnoFilter)}>
+        <select value={shiftFilter} onChange={handleFilterChange(setShiftFilter)}>
           <option value="">Todos os turnos</option>
-          {turnos.map((t) => (
-            <option key={t} value={t}>{t}</option>
+          {shifts.map((s) => (
+            <option key={s} value={s}>{s}</option>
           ))}
         </select>
 
@@ -92,8 +91,7 @@ export default function CoursesList({ searchTerm = "" }) {
         {visibleCourses.map((course) => (
           <CourseCard
             key={course.id}
-            institute={course.institute}
-            course={course.course}
+            course={course}
           />
         ))}
       </div>

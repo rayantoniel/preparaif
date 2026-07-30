@@ -1,13 +1,41 @@
-import prisma from "../config/prisma.js";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export async function findAllCourses() {
-  const courses = await prisma.course.findMany();
-  return courses.map(c => ({ ...c, edicts: JSON.parse(c.edicts) }));
+  return await prisma.course.findMany({
+    orderBy: {
+      id: "asc",
+    },
+  });
+}
+
+// coursesController.js no BACKEND:
+export async function findCourseById(id) {
+  return await prisma.course.findUnique({
+    where: {
+      id: Number(id),
+    },
+    include: {
+      editals: true,
+    },
+  });
 }
 
 export async function createCourseService(data) {
-  const course = await prisma.course.create({
-    data: { ...data, edicts: JSON.stringify(data.edicts || []) }
+  return await prisma.course.create({
+    data: {
+      title: data.title,
+      description: data.description,
+      instituteName: data.instituteName,
+      instituteLogo: data.instituteLogo,
+      image: data.image,
+      readTime: data.readTime,
+      modality: data.modality,
+      duration: data.duration,
+      degree: data.degree,
+      shift: data.shift,
+      campus: data.campus,
+    },
   });
-  return { ...course, edicts: JSON.parse(course.edicts) };
 }
