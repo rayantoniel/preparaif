@@ -8,7 +8,7 @@ export default function HeaderHome({ searchTerm, onSearchChange }) {
 					A NOSSA FERRAMENTA NÃO TEM FINS LUCRATIVOS
 				</p>
 				<h1 className="hero-title">
-					Seja Bem-vindo ao único{" "}
+					Seja Bem-vindo ao único {" "}
 					<span className="highlight-green">site institucional</span> que{" "}
 				</h1>
 				<h1 className="hero-title">

@@ -1,13 +1,14 @@
-import prisma from "../config/prisma.js";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
-export async function findAllCourses() {
-  const courses = await prisma.course.findMany();
-  return courses.map(c => ({ ...c, edicts: JSON.parse(c.edicts) }));
+export async function getAllCoursesService() {
+  return await prisma.course.findMany({
+    include: { editals: true },
+  });
 }
 
 export async function createCourseService(data) {
-  const course = await prisma.course.create({
-    data: { ...data, edicts: JSON.stringify(data.edicts || []) }
+  return await prisma.course.create({
+    data,
   });
-  return { ...course, edicts: JSON.parse(course.edicts) };
 }

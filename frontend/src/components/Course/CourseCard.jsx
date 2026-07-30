@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './CourseCard.css';
+import './CourseStyle.css';
 
 const FALLBACK_IMAGE =
   "data:image/svg+xml;utf8," +
@@ -24,12 +24,12 @@ const FALLBACK_LOGO =
     </svg>`
   );
 
-export default function CourseCard({ institute, course }) {
+export default function CourseCard({ course }) {
 
     const navigate = useNavigate();
 
     const irParaCurso = () => {
-        navigate('/curso');
+        navigate(`/curso/${course.id}`);
     };
 
     return (
@@ -38,24 +38,24 @@ export default function CourseCard({ institute, course }) {
                 <img
                     className="course-image"
                     src={course.image || FALLBACK_IMAGE}
-                    alt={course.name}
+                    alt={course.title}
                     onError={(e) => { e.currentTarget.src = FALLBACK_IMAGE; }}
                 />
-                {course.turno && <span className="course-badge">{course.turno}</span>}
+                {course.shift && <span className="course-badge">{course.shift}</span>}
             </div>
 
             <div className="course-body">
                 <div className="institute">
                     <img
                         className="img-institute"
-                        src={institute.logo || FALLBACK_LOGO}
-                        alt={institute.name}
+                        src={course.instituteLogo || FALLBACK_LOGO}
+                        alt={course.instituteName}
                         onError={(e) => { e.currentTarget.src = FALLBACK_LOGO; }}
                     />
-                    <h2 className="institute-title">{institute.name}</h2>
+                    <h2 className="institute-title">{course.instituteName}</h2>
                 </div>
 
-                <h2 className="course-title">{course.name}</h2>
+                <h2 className="course-title">{course.title}</h2>
 
                 <div className="info-button">
                     <span className="course-info">Informações públicas no site da instituição</span>

@@ -1,3 +1,12 @@
+course-details-page {
+  font-family: 'Inter', sans-serif;
+  color: #5C6B63;
+  text-align: center;
+  padding: 32px 0;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
 .details-body {
   background-color: var(--color-bg);
   display: grid;

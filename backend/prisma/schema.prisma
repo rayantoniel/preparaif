@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,28 +15,38 @@ model Course {
   instituteLogo String
   image         String
   readTime      String
-  modalidade    String
-  duracao       String
-  titulo        String
-  turno         String
+  modality      String
+  duration      String
+  degree        String
+  shift         String
   campus        String
-  edicts        String
-  createdAt     DateTime @default(now())
+  editals       Edital[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Edital {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  time      String
+  id            Int     @id @default(autoincrement())
+  title         String
+  description   String
+  time          String
+  content       String
+  instituteName String
+  instituteLogo String?
+  courseId      Int?
+  course        Course? @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
   createdAt DateTime @default(now())
+  publishAt DateTime @default(now())
 }
 
 model Exam {
   id        Int        @id @default(autoincrement())
   title     String
   questions Question[]
-  createdAt DateTime   @default(now())
+
+  createdAt DateTime @default(now())
 }
 
 model Question {
@@ -45,5 +55,5 @@ model Question {
   options            String
   correctAnswerIndex Int
   examId             Int
-  exam               Exam   @relation(fields: [examId], references: [id])
+  exam               Exam   @relation(fields: [examId], references: [id], onDelete: Cascade)
 }
