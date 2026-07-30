@@ -1,11 +1,18 @@
+const API_URL = "http://localhost:3000";
 export async function fetchCourses() {
-  const response = await fetch("/api/curso");
-  if (!response.ok) throw new Error("Erro ao buscar os cursos");
+  const response = await fetch(`${API_URL}/api/courses`);
+
+  if (!response.ok) {
+    throw new Error(`Erro ao buscar cursos (${response.status})`);
+  }
 
   const data = await response.json();
-  
 
-  return data?.map((c) => ({
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  return data.map((c) => ({
     id: c.id,
     title: c.title,
     description: c.description,
@@ -22,16 +29,16 @@ export async function fetchCourses() {
       id: e?.id,
       title: e?.title,
       description: e?.description,
-      time: e?.time
-    }))
+      time: e?.time,
+    })),
   }));
 }
 
 export async function fetchCourseById(id) {
-  const response = await fetch(`/api/curso/${id}`);
-  
+  const response = await fetch(`/api/courses/${id}`);
+
   if (!response.ok) {
-    throw new Error("Erro ao buscar o curso");
+    throw new Error(`Erro ao buscar o curso (${response.status})`);
   }
 
   const data = await response.json();

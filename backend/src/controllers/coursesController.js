@@ -1,26 +1,23 @@
 import {
-  findAllCourses,
-  findCourseById,
   createCourseService,
+  getAllCoursesService,
 } from "../services/coursesService.js";
 
-export async function getCourses(req, res) {
-  const courses = await findAllCourses();
-  res.json(courses);
-}
-
 export async function createCourse(req, res) {
-  const course = await createCourseService(req.body);
-  res.json(course);
+  try {
+    const courseData = req.body;
+    const newCourse = await createCourseService(courseData);
+    return res.status(201).json(newCourse);
+  } catch (error) {
+    return res.status(400).json({ error: "Erro ao criar curso" });
+  }
 }
 
-export async function getCourseById(req, res) {
-  const { id } = req.params;
-  const course = await findCourseById(id);
-
-  if (!course) {
-    return res.status(404).json({ message: "Curso não encontrado" });
+export async function getCourses(req, res) {
+  try {
+    const courses = await getAllCoursesService();
+    return res.json(courses);
+  } catch (error) {
+    return res.status(500).json({ error: "Erro ao buscar cursos" });
   }
-
-  return res.json(course);
 }

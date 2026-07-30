@@ -1,24 +1,42 @@
-import { findAllEditais, createEditaisService } from "../services/editaisService.js";
+import {
+  findAllEditais,
+  findEditalByIdService,
+  createEditaisService,
+} from "../services/editaisService.js";
 
 export async function getEditais(req, res) {
-  const editais = await findAllEditais();
-  res.json(editais);
-}
-
-export async function createEditais(req, res) {
-  const { title, content, time } = req.body;
-  const editais = await createEditaisService(title, content, time);
-  res.json(editais);
+  try {
+    const editais = await findAllEditais();
+    res.json(editais);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar editais" });
+  }
 }
 
 export async function getEditalById(req, res) {
-  const { id } = req.params;
-  const editais = await findAllEditais();
-  const edital = editais.find((edital) => edital.id === parseInt(id));
+  try {
+    const { id } = req.params;
 
-  if (!edital) {
-    return res.status(404).json({ message: "Edital não encontrado" });
+    const edital = await findEditalByIdService(id);
+
+    if (!edital) {
+      return res.status(404).json({ message: "Edital não encontrado" });
+    }
+
+    res.json(edital);
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar o edital" });
   }
+}
 
-  res.json(edital);
+export async function createEditais(req, res) {
+  try {
+    const newEdital = await createEditaisService(req.body);
+    res.status(201).json(newEdital);
+  } catch (error) {
+    console.error("Erro ao criar edital:", error);
+    res
+      .status(400)
+      .json({ error: "Erro ao cadastrar o edital. Verifique os dados." });
+  }
 }

@@ -18,17 +18,10 @@ function EditalDetails() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Carregando o edital...</p>;
-  if (error) return <p>Erro: {error}</p>;
-  if (!edital) return <p>Edital não encontrado.</p>;
+  if (loading) return <p className="loading-state">Carregando o edital...</p>;
+  if (error) return <p className="error-state">Erro: {error}</p>;
+  if (!edital) return <p className="not-found-state">Edital não encontrado.</p>;
 
-  if (!edital) {
-    return (
-      <div className="course-details-page">
-        <p>Curso não encontrado.</p>
-      </div>
-    );
-  }
   return (
     <div className="edict-page-container">
       <button className="btn-voltar edict-back" onClick={() => navigate(-1)}>
@@ -53,20 +46,30 @@ function EditalDetails() {
           <span className="source-info">
             Informações extraídas do Portal do Ifal
           </span>
-          <h1 className="edict-title">Edital 01/2025</h1>
+
+          <h1 className="edict-title">{edital.title}</h1>
+
           <p className="read-time-info">
-            <span className="green-highlight">Informações sobre o curso</span> -
-            4min de leitura
+            <span className="green-highlight">Publicado em</span> -{" "}
+            {edital.time}
           </p>
+
           <img
-            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop"
-            alt="Sala de aula"
+            src={
+              edital.instituteLogo ||
+              "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=800&auto=format&fit=crop"
+            }
+            alt={edital.title}
             className="edict-image"
           />
         </div>
 
         <div className="edict-right-col">
-          {edital.description}
+          <p className="edict-description">{edital.description}</p>
+
+          {edital.content && (
+            <div className="edict-body-content">{edital.content}</div>
+          )}
 
           <div className="action-card">
             <div className="action-card-header">

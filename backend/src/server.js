@@ -1,19 +1,7 @@
-import express from "express";
-import cors from "cors";
-import courseRoutes from "./routes/coursesRoutes.js"; 
-import editalRoutes from "./routes/editaisRoutes.js";
-import examRoutes from "./routes/examsRoutes.js";
+import app from "./app.js";
 
-const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-app.use(express.json());
-
-
-app.use("/api/curso", courseRoutes);
-app.use("/api/edital", editalRoutes);
-app.use("/api/exame", examRoutes);
-
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000 🚀");
+app.listen(PORT, () => {
+  console.log(`🚀 API rodando em http://localhost:${PORT}`);
 });
